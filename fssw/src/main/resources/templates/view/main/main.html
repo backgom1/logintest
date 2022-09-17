@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: header">
+</head>
+
+<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54">
+<nav th:replace="fragments/bodyHeader :: bodyHeader">
+</nav>
+<header class="masthead" style="background-image:url('../assets/img/header-bg.jpg');">
+    <div class="container">
+        <div class="intro-text">
+            <div class="intro-lead-in"><span>For Seoil SoftWare</span></div>
+            <div class="intro-heading text-uppercase"><span>Ant<br>hit!!<br></span></div>
+            <a class="btn btn-primary btn-xl text-uppercase" role="button" href="#services"
+               style="background: rgb(32,113,250);border-width: 0px;border-color: rgb(255,255,255);">더 알아보기</a>
+        </div>
+    </div>
+</header>
+<section id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="text-uppercase section-heading">기능 설명</h2>
+                <h3 class="text-muted section-subheading">해당 페이지가 갖고 있는 기능들을 소개해드립니다.</h3>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i
+                    class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i></span>
+                <h4 class="section-heading">ELK STACK을 활용한 커리큘럼</h4>
+                <p>
+                    FSSW에서는 학새 여러분이 더욱 더 편하게 소프트웨어 개발을 돕도록
+                    ELK STACK를 활용한 커리큘럼과 키워드를 제공하여 한층 더 개발을
+                    쉽고 재미있게 공부 할 수 있도록 서비스를 제공하고 있습니다.
+                </p>
+            </div>
+            <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i
+                    class="fa fa-laptop fa-stack-1x fa-inverse"></i></span>
+                <h4 class="section-heading">게시판</h4>
+                <p>
+                    학생들은 게시판을 이용해 자유롭게 소통하며
+                    서로의 프로젝트 팀원을 구하고, 고민상담을 통해
+                    개발자로써의 서로를 더욱 더 잘 알아 갈 수 있습니다.
+                </p>
+            </div>
+            <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i
+                    class="fa fa-lock fa-stack-1x fa-inverse"></i></span>
+                <h4 class="section-heading">뜨거운 이슈</h4>
+                <p>
+                    최근 가장 많이 검색된 단어는 무엇일까요??
+                    개발자의 핫 이슈, FSSW에서 확인하고
+                    최신 트렌드를 따라갈 수 있도록 도와드립니다.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="bg-light" id="portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="text-uppercase section-heading">팀원 소개</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-4 portfolio-item"><a class="portfolio-link" href="#portfolioModal1"
+                                                             data-bs-toggle="modal">
+                <div class="portfolio-hover">
+                    <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
+                </div>
+                <img class="img-fluid" src="../assets/img/portfolio/1-thumbnail.jpg">
+            </a>
+                <div class="portfolio-caption">
+                    <h4>양권모</h4>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 portfolio-item"><a class="portfolio-link" href="#portfolioModal2"
+                                                             data-bs-toggle="modal">
+                <div class="portfolio-hover">
+                    <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
+                </div>
+                <img class="img-fluid" src="../assets/img/portfolio/2-thumbnail.jpg">
+            </a>
+                <div class="portfolio-caption">
+                    <h4>정구연</h4>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 portfolio-item"><a class="portfolio-link" href="#portfolioModal3"
+                                                             data-bs-toggle="modal">
+                <div class="portfolio-hover">
+                    <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
+                </div>
+                <img class="img-fluid" src="../assets/img/portfolio/3-thumbnail.jpg">
+            </a>
+                <div class="portfolio-caption">
+                    <h4>이은성</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<div th:replace="fragments/footer :: footer">
+</div>
+</body>
+
+</html>

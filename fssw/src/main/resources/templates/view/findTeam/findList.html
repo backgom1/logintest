@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" th:href="@{/assets/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Tamil+Supplement&amp;display=swap">
+    <link rel="stylesheet" th:href="@{/assets/fonts/fontawesome-all.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/fonts/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/fonts/fontawesome5-overrides.min.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" th:href="@{/assets/css/Navbar-With-Button-icons.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/untitled.css}">
+</head>
+
+<body>
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark" id="mainNav"
+     style="background-color: var(--bs-white) !important;padding: 0px;border-bottom-style: solid;border-bottom-color: rgb(32,113,250);">
+    <div class="container" href="#"><span><a href="javascript:history.back();" class="fas fa-arrow-left" style="color: rgb(32,113,250);"></a>&nbsp;팀원 게시판</span>
+        <button style="background: var(--bs-blue);margin: 10px;"
+                class="navbar-toggler navbar-toggler-right"
+                type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto text-uppercase">
+                <li class="nav-item"><a class="nav-link" href="/roadmap" style="color: rgb(0,0,0);">선배의 눈높이 교육</a></li>
+                <li class="nav-item"><a class="nav-link" href="/curriculum" style="color: rgb(0,0,0);">학습 과정</a></li>
+                <li class="nav-item"><a class="nav-link" href="/findteam" style="color: rgb(0,0,0);">팀원 구하기</a></li>
+                <li class="nav-item"><a class="nav-link" href="/community" style="color: rgb(0,0,0);">커뮤니티 게시판</a></li>
+                <li class="nav-item"><a class="nav-link" href="/hotKeyword" style="color: rgb(0,0,0);">뜨거운 이슈</a></li>
+                <li class="nav-item"><a class="nav-link" href="/faq" style="color: rgb(0,0,0);">자주 묻는 질문</a></li>
+                <li class="nav-item"><a class="nav-link" href="/login" style="color: rgb(0,0,0);">로그인</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid" style="height: 100%;">
+    <div class="card shadow" style="margin-top: 80px;">
+        <div class="card-header py-3"><span style="color: rgb(32,113,250);font-weight: bold;">팀원 게시판</span></div>
+        <div class="card-body">
+            <div class="d-flex justify-content-start dataTables_length" id="dataTable_length"
+                 aria-controls="dataTable"></div>
+                <div class="col offset-0 d-flex d-lg-flex justify-content-end" style="width: 100%;">
+                    <a href="/findteam/findWrite"
+                       class="btn btn-primary text-center border rounded d-lg-flex justify-content-center align-items-center justify-content-lg-center justify-content-xxl-center"
+                       type="button"
+                       style="width: 100px;height: 60px;color: rgb(255,255,255);background: rgb(32,113,250);font-size: 13px;border-color: #ffffff;">게시글
+                        작성</a></div>
+            <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                    <tr>
+                        <td>카테고리</td>
+                        <td>제목</td>
+                        <td>작성 날짜</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- 만약 num값이 1이라면 1번에 해당하는 값을 출력해줍니다. -->
+                    <tr class="flash animated" th:each="communityList : ${data}" th:if="${communityList.num == 2}">
+                        <td class="flash animated" th:text="${communityList.category}"></td>
+                        <td><a th:href="@{/findteam/{id}/findDetail (id=${communityList.id})}"
+                               th:text="${communityList.title}"></a></td>
+                        <td th:text="${#temporals.format(communityList.date, 'yyyy-MM-dd')}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center" style="margin-top: 20px;">
+                        <li class="page-item"  th:classappend="${1 == data.pageable.pageNumber + 1} ? 'disabled'" >
+                            <a class="page-link" href="#"
+                               tabindex="-1" aria-disabled="true"
+                               th:href="@{/findteam(page=${data.pageable.pageNumber - 1}, search=${param.search})}">이전</a>
+                        </li>
+                        <li class="page-item"
+                            th:each="i: ${#numbers.sequence(startPage,endPage)}"
+                            th:classappend="${i == data.pageable.pageNumber + 1} ? 'disabled'">
+                            <a class="page-link"
+                               href="#"
+                               th:text="${i}"
+                               th:href="@{/findteam(page=${i - 1},search=${param.search})}">1</a>
+                        </li>
+                        <li class="page-item"
+                            th:classappend="${data.totalPages == data.pageable.pageNumber + 1} ? 'disabled'">
+                            <a class="page-link"
+                               th:href="@{/findteam(page=${data.pageable.pageNumber + 1},search=${param.search})}"
+                               href="#">다음</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex justify-content-center" method="GET" th:action="@{/findteam}">
+                        <div class="col-auto">
+                            <select id="category" name="category" class="form-select"
+                                    onchange="this.options[this.selectedIndex].value()">
+                                <option id="1">코딩 상담</option>
+                                <option id="2">스터디 상담</option>
+                                <option id="3">공부 상담</option>
+                            </select>
+                        </div>
+                        <div class="col-auto">
+                            <label for="search" class="visually-hidden">검색</label>
+                            <input type="text" class="form-control" id="search" name="search" th:value="${param.search}"/>
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary mb-5">검색</button>
+                        </div>
+                    </form>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer">
+</div>
+</body>
+
+</html>
