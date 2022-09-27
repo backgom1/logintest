@@ -22,8 +22,6 @@ public class CommentController {
     private final CommunityService communityService;
     private final CommentApiRepository commentApiRepository;
 
-    private final CommentRepository commentRepository;
-
     @ResponseBody
     @PostMapping(produces = "application/json; charset=UTF-8")
     public String saveComment(@RequestBody Map<String, String> map) {

@@ -14,7 +14,6 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@DynamicInsert
 @Table(name="Comment")
 public class Comment {
 

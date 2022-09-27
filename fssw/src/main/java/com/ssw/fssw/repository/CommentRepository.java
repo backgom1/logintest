@@ -48,5 +48,4 @@ public class CommentRepository {
         return em.createQuery(s).executeUpdate();
 
     }
-
 }
